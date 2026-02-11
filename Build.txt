@@ -1,0 +1,5 @@
+npm create vite@latest <appnameinlower> -- --template react
+cd <appnameinlower>
+npm install
+npm pkg set scripts.preview="vite build && vite preview --host"
+npm run preview
