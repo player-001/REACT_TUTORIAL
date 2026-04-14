@@ -1,5 +1,7 @@
 import React from 'react';
 import './ProductList.css'; 
+import {useDispatch, useSelector} from "./CartSlice"
+import {addItemToCart} from "./CartSlice"
 
 const ProductList = () => {
 
@@ -8,6 +10,12 @@ const ProductList = () => {
     { id: 2, name: 'Product B', price: 75 },
     { id: 3, name: 'Product C', price: 30 },
   ];
+
+  const dispatch = useDispatch()
+  const cartItems = useSelector(state => state.cart.cartItems)
+  const handleAddToCart = product => {
+    dispatch(addItemToCart(product))
+  }
 
   return (
     <div className="product-list">
@@ -18,7 +26,12 @@ const ProductList = () => {
                 const item = (
                     <li key = {product.id} className = "product-list-item">
                         <span>{product.name} - ${product.price}</span>
-                        <button>Add to Cart</button>
+                        <button className = {`add-to-cart-btn ${cartItems.some(item => item.id === product.id) ? 'disabled': ''}`}
+                        onClick = {() => handleAddToCart(product)}
+                        disabled = {cartItems.some(item => item.id === product.id)}
+                        >
+                            {cartItems.some(item => item.id === product.id) ? 'Added': 'Add To Cart'}
+                        </button>
                     </li>
                 )
                 return item
