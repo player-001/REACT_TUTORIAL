@@ -4,11 +4,11 @@ const initialState = {
     cartItems: [],
 }
 
-const CartSlice = createSlice({
-    name: 'cart',
-    initialState,
-    reducers: {
-    addItemToCart(state, action){    //here the action payload is the cart object
+const CartSlice = createSlice({   //slice can be said as a container containing the state with all the operations that can be performed on that state
+    name: 'cart',       //name of the container
+    initialState,       //the initial state
+    reducers: {         //all the functions that can be performed on the state
+    addItemToCart(state, action){    //here the action is the payload that is to be passed to the function
         const existingItem = state.cartItems.find((item) => {item.id === action.payload.id 
             return item})
         if (existingItem){
@@ -46,7 +46,7 @@ const CartSlice = createSlice({
 
     }
 });
-export const {
+export const {     //exporting the functions or actions
         addItemToCart,
         removeItemFromCart,
         clearCart,

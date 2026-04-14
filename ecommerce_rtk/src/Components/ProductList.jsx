@@ -11,9 +11,9 @@ const ProductList = () => {
     { id: 3, name: 'Product C', price: 30 },
   ];
 
-  const dispatch = useDispatch()
-  const cartItems = useSelector(state => state.cart.cartItems)
-  const handleAddToCart = product => {
+  const dispatch = useDispatch()   //used to fetch a function from the store
+  const cartItems = useSelector(state => state.cart.cartItems)  //fetching the state from the store
+  const handleAddToCart = product => { //creating a function after fetching it from the store
     dispatch(addItemToCart(product))
   }
 
