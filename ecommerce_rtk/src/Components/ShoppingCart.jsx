@@ -1,7 +1,7 @@
 import React from 'react';
 import './ShoppingCart.css'; 
 import {useDispatch, useSelector} from "react-redux"
-import {removeItemFromCart, clearCart, increaseItemQuantity, decreaseItemQuantity} from "./cartSlice"
+import {removeItemFromCart, clearCart, increaseItemQuantity, decreaseItemQuantity} from "./CartSlice"
 const ShoppingCart = () => {
     const dispatch = useDispatch();
     const cartItems = useSelector(state => state.cart.cartItems);
@@ -19,7 +19,7 @@ const ShoppingCart = () => {
         dispatch(increaseItemQuantity(itemId))
     }
 
-    cinst handleDecreaseQuantity = itemId => {
+    const handleDecreaseQuantity = itemId => {
         dispatch(decreaseItemQuantity(itemId))
     }
    return (
